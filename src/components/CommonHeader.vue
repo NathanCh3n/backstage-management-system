@@ -3,7 +3,7 @@
         <div class="l-content">
             <el-button @click="handlMenu" type="primary" icon="el-icon-menu" size="mini" class="search"></el-button>
             <!-- 面包屑 -->
-            <span class="txt">首页</span>
+            <span class="txt"></span>
         </div>
         <div class="r-content">
             <el-dropdown>

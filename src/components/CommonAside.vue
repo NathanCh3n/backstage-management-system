@@ -53,6 +53,7 @@
     text-align: center;
     line-height: 48px;
     font-size: 16px;
+    max-height: 48px;
   }
 }
 </style>
