@@ -10,7 +10,7 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <h3>通用后台管理系统</h3>
+      <h3>{{ isCollapse ? '后台' : '通用后台管理系统' }}</h3>
       <el-menu-item
         v-for="item in noChildren"
         :key="item.name"
@@ -20,7 +20,6 @@
         <i :class="`el-icon-${item.icon}`"></i>
         <span slot="title">{{ item.label }}</span>
       </el-menu-item>
-
       <el-submenu
         v-for="item in hasChildren"
         :key="item.label"
@@ -47,7 +46,8 @@
   min-height: 400px;
 }
 .el-menu {
-  height: 100px;
+  height: 100vh; // vh：浏览器可见视口【高度】的百分比（1vw代表视窗【高度】的1%）
+  border-right: none;
   h3 {
     color: #fff;
     text-align: center;
@@ -61,7 +61,6 @@
 export default {
   data() {
     return {
-      isCollapse: false,
       menuData: [
         {
           path: "/home",
@@ -130,6 +129,11 @@ export default {
     hasChildren() {
       return this.menuData.filter((item) => item.children);
     },
+    isCollapse() {
+      return this.$store.state.tab.isCollapse
+    }
   },
 };
 </script>
+<style>
+</style>
