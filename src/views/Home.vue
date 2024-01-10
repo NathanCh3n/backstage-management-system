@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>123</h1>
     <el-row>
       <el-col :span="8">
         <el-card class="box-card">
@@ -21,10 +20,17 @@
             <el-table-column v-for="(val, key) in tableLabel" :prop="key" :label="val" :key="key"></el-table-column>
           </el-table>
         </el-card>
-        <div class="grid-content bg-purple"></div>
       </el-col>
       <el-col :span="16">
-        <div class="grid-content bg-purple-light"></div>
+        <div class="num">
+          <el-card v-for="item in countData" :key="item.name" :body-style="{ display: 'flex', padding: 0}">
+            <i class="icon" :class="`el-icon-${item.icon}`" :style="{ background: item.color}"></i>
+            <div class="txt">
+              <p class="price">$ {{ item.value }}</p>
+              <p class="dec">{{ item.name }}</p>
+            </div>
+          </el-card>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -160,4 +166,39 @@ export default {
     }
   }
 }
+.num {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .el-card {
+    width: 32%;
+    margin-bottom: 20px;
+  }
+  .icon {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    color: #fff;
+  }
+  .txt {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 15px;
+    .price {
+      font-size: 30px;
+      margin-bottom: 10px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .desc {
+      font-size: 14px;
+      text-align: center;
+      color: #999;
+    }
+  }
+}
 </style>
+ 
